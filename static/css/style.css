@@ -1,0 +1,136 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    /* font-family: 'Song Myung', serif; */
+
+    list-style: none;
+    text-decoration: none;
+    border-collapse: collapse;
+
+    margin: 0px;
+    padding: 0px;
+
+    color: black;
+}
+
+body {
+    background: rgb(235, 235, 235);
+}
+
+/* 업로드 버튼 */
+.upload-btn {
+    padding-top: 1%;
+}
+
+/* 포스트 카드 */
+.post-card {
+    max-width: 1200px;
+    margin: 100px auto 30px auto;
+    display: grid;
+
+    gap: 28px;
+
+    @media screen and (max-width: 718px) {
+        gap: 3px;
+    }
+}
+
+.post-card>li {
+    flex: 1;
+    height: auto;
+}
+
+.card-box {
+    width: 280px;
+    margin: 0 auto;
+}
+
+.card {
+    cursor: pointer;
+    border-bottom: none;
+    border: 5px solid rgba(134, 72, 1, 0.562);
+    box-shadow: 3px 3px 3px 3px rgba(128, 128, 128, 0.541);
+    margin-bottom: 10%;
+}
+
+.card-img {
+    height: 190px;
+    margin-top: 3%;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-title {
+    align-items: center;
+    text-align: center;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-around;
+
+    padding: 3%;
+    background: white;
+}
+
+.icons i {
+    cursor: pointer;
+}
+
+/* 글자수 제한 */
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    height: 72px;
+}
+
+/* 스타일 선택지 */
+.style-imgs {
+    display: flex;
+    overflow-x:auto;
+    overflow-y: hidden;
+    margin-left: 10%;
+    margin-right: 10%;   
+    white-space:nowrap;
+    overflow-x:scroll;
+}
+
+.imgbox {
+    margin: 20px;
+}
+
+.imgs {
+    width: 150px;
+    height: 150px;
+}
+
+input[type="checkbox"]{display:none}
+
+input[type="checkbox"] + label
+
+span {
+    display:inline-block;
+    vertical-align:middle;
+}
+
+input[type="checkbox"]:checked + label span{
+    border-radius: 1px;
+    box-shadow: 0px 0px 0px 8px rgba(92,119,255,0.3);
+}
+
+/* 반응형 */
+@media (min-width: 718px) {
+    .post-card {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px 3px;
+    }
+}
+
+@media (min-width: 900px) {
+    .post-card {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px 10px;
+    }
+}

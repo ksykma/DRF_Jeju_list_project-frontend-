@@ -1,0 +1,234 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    /* font-family: 'Song Myung', serif; */
+}
+
+/* Upload Modal */
+.modal {
+    overflow-y: initial !important
+}
+
+.modal-content {
+    overflow-y: auto;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: rgb(238, 236, 232);
+    margin: 5% auto;
+
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+
+    height: 88%;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-header>h3 {
+    font-size: medium;
+}
+
+.style-imgs {
+    display: inline-flex;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.imgs {
+    width: 150px;
+    height: 150px;
+}
+
+/* Upload Button */
+.filebox {
+    margin: auto;
+    margin-top: 3%;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #999999;
+    cursor: pointer;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.real-upload {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+
+/* 게시글 입력란 */
+.write {
+    margin: auto;
+}
+
+.title {
+    width: 500px;
+    height: 50px;
+    margin-bottom: 3%;
+    border-radius: 3px;
+}
+
+.content {
+    resize: none;
+
+    width: 500px;
+    height: 150px;
+    border-radius: 3px;
+}
+
+.result-btn {
+    margin: auto;
+}
+
+.result-btn>button {
+    font-weight: bold;
+}
+
+/* 게시글 상세 Modal */
+.popup-wrap {
+    overflow-y: initial !important
+}
+
+.popup {
+    overflow-y: auto;
+}
+
+.popup-wrap {
+    background-color: rgba(0, 0, 0, .3);
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: none;
+    z-index: 5;
+}
+
+.popup {
+    position: relative;
+
+    width: 95%;
+    height: 90%;
+
+    background-color: rgb(238, 236, 232);
+}
+
+/* 모달창 헤더 */
+.popup-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+}
+
+.popup-close {
+    position: fixed;
+    right: 5%;
+
+    cursor: pointer;
+    font-size: 30px;
+}
+
+/* 모달창 바디 */
+.popup-body {
+    text-align: center;
+}
+
+.popup-img {
+    height: 400px;
+    margin: auto;
+    margin-bottom: 2%;
+}
+
+.input-title {
+    margin-top: 20px;
+}
+
+.popup-content {
+    padding-right: 15%;
+    padding-left: 15%;
+    text-align: center;
+}
+
+/* 모달창 댓글 */
+.popup-comment {
+    padding-right: 30%;
+    padding-left: 30%;
+}
+
+.popup-comment>h1 {
+    text-align: center;
+}
+
+.popup-post-comment {
+    margin-bottom: 2%;
+    padding-right: 15%;
+    padding-left: 15%;
+    text-align: center;
+}
+
+.popup-post-input-btn {
+    font-weight: bold;
+    color: dodgerblue;
+    border: none;
+    background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.popup-post-input {
+    height: 50px;
+    width: 500px;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+/* 모달 수정삭제 버튼 간격 */
+.popup-header i {
+    margin: 1%;
+}
