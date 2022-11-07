@@ -1,3 +1,4 @@
+
 // 전역 변수 //
 const backend_base_url = 'http://127.0.0.1:8000/'
 const frontend_base_url = 'http://127.0.0.1:5500/templates/'
@@ -29,6 +30,7 @@ async function handleSignup(){
         alert("조건에 맞춰 입력해주세요.")
     }
 }
+
 
 //# 로그인//
 async function handleLogin(){
@@ -98,50 +100,20 @@ function open_modal(id) {
 
 function close_modal(id) {
     // id 파라미터가 str값 으로 넘어와서 slice하고 int로 변환
-    change_to_int = parseInt(id.slice(1))
+    change_to_int = parseInt(id)
 
     function modal_close() {
         $("#popup" + change_to_int).fadeOut();
     }
 
-    $("#close" + change_to_int)
+    $("#close" + change_to_int).fadeOut();
     modal_close(); //모달 닫기
 }
 // 모달 끝 //
 
- // 가게보여주기 // 
- async function getStores(){
-    const response = await fetch(`${backend_base_url}/main`, {
-          method:'GET',
-    }
-    )
-  
-    response_json = await response.json()
-    return response_json
-  }
-  
-  async function loadStores(){    // 화면이 전환되면 loadStore함수 발동
-    const stores = await getStores()                 // 위에있는 getStores 함수 response_json을 stores에 저장
-    console.log(stores) 
-    const store_list = document.getElementById("stores") // store_list = 다 가져온거
-
-    stores.forEach(store=> { // stores에 있는 store 하나씩 꺼내오기
-        const newStore = document.createElement("card"); // div태그 생성
-        const storeImage = document.createElement("img") // img태그 생성
-        storeImage.setAttribute("src", `${backend_base_url}${store.img}`) // img태그에 str에 백엔드에 있는 store.img 꺼내와서 넣어주기
-        newStore.setAttribute("id", store.id) // 가게 디테일을 위한 store.id 값을 div태그의 id에 넣어주기
-        newStore.innerText = store.store_name // innerText에 store 상호명 넣어주기
-        newStore.setAttribute("onclick", "storeDetail(this.id") //가게 디테일을 위해 가게 클릭했을 때 id값으로 열어주기
-        newStore.appendChild(storeImage) // newstore에 이미지 넣어주고
-        store_list.appendChild(newStore) // store_list에 이미지까지 넣어준 newStore 넣기
-    });
-  }
-// 별점 3.5 이상인애들 랜덤으로 뽑아서
-
-
-
 //store, comment GET API //
 function show_store(){
+    console.log('ddddddddddddddddddddddddddddddddddddd')
     $.ajax({
         type: 'GET',
         url:`${backend_base_url}main/`,
@@ -154,59 +126,105 @@ function show_store(){
                     postings[i].store_name,
                     postings[i].address,
                     postings[i].img,
+                    postings[i].star,
+                    postings[i].comments,
 
                 )
             }
-            function append_temp_html(id, store_name, address, img){
+            function append_temp_html(id, store_name, address, img, star, comments){
                 temp_html = `
             <li>
                 <div class="card-box">
                     <!-- 게시글 -->
-                    <div class="card" id="${id}" onClick="open_modal(this.id)">
+                    <div class="card" id="${id}" onClick="page2machine(this.id)">
                         <div class="card-img" style="background: url(${img}) no-repeat center center/contain;"></div>
                         <div class="card-body">
                             <h5 class="card-title">${store_name}</h5>
                             <hr>
                             <p class="card-text">${address}</p>
+                            <p class="card-text">${star}</p>
                         </div>
                     </div>
-                    <!-- 게시글 상세페이지 모달 -->
-                    <div class="popup-wrap" id="popup${id}">
+                    <button class="card-store-detail" id="${id}" onclick="open_modal(this.id)">
+                        자세히
+                    </button> 
+                </div>
+                <!-- 게시글 상세페이지 모달 -->
+                <div class="popup-wrap" id="popup${id}">
                     <div class="popup">
-                    <!-- 게시글 상세페이지 모달창 헤더 -->
-                    <div class="popup-header">
-                        <span></span>
-                        <h2>${store_name} 가게의 정보</h2>
-                        <span></span>
-                        <i type="dutton" id="${id}" onClick="close_modal(this.id)" class="popup-close fa-solid fa-square-xmark"></i>
+                        <!-- 게시글 상세페이지 모달창 헤더 -->
+                        <div class="popup-header">
+                            <span></span>
+                            <h2>${store_name} 님의 게시물</h2>
+                            <span></span>
+                            <i type="button" id="1${id}" onClick="close_modal(this.id)" class="popup-close fa-solid fa-square-xmark"></i>
+                        </div>    
+                        <!-- 게시글 상세페이지 모달창 바디 -->
+                        <div class="popup-body">
+                            <div class="popup-img" style="background: url(${img}) no-repeat center center/contain;">
+                        </div>
+                        <h2 class="popup-title">${store_name}</h2>
+                        <hr>
+                        <h5 class="popup-content">${address}</h5>
+                        <hr>
                     </div>
-            
-                    <!-- 게시글 상세페이지 모달창 바디 -->
-                    <div class="popup-body">
-                        <div class="popup-img" style="background: url(${img}) no-repeat center center/contain;">
+                    <!-- 게시글 상세페이지 모달창 댓글 input -->
+                    <div class="popup-post-comment">
+                        <input class="popup-post-input" id="comment_input${id}" type="text" placeholder="댓글을 입력 해주세요..." />
+                        <button class="popup-post-input-btn" onclick="post_comment(${id})">저장</button>
+                    </div>   
+                    <!-- 게시글 상세페이지 모달창 댓글 output -->
+                    <div class="popup-comment" id="comment${id}">
                     </div>
-                    <h2 class="popup-title">${store_name}</h2>
-                    <hr>
-                    <h5 class="popup-content">${address}</h5>
-                    <hr>
                 </div>
-                <!-- 게시글 상세페이지 모달창 댓글 input -->
-                <div class="popup-post-comment">
-                    <input class="popup-post-input" id="comment_input${id}" type="text" placeholder="댓글을 입력 해주세요..." />
-                    <button class="popup-post-input-btn" onclick="post_comment(${id})">저장</button>
-                </div>
-                <!-- 게시글 상세페이지 모달창 댓글 output -->
-                <div class="popup-comment" id="comment${id}">
-                </div>
-            </div>
-        </div>
-    </li>
+            </li>
             `
             $('#card').append(temp_html)
+            // 댓글
+            for (let j = 0; j < comments.length; j++) {
+    
+                let time_post = new Date(comments[j].created_at)
+    
+            $(`#comment${id}`).append(`<p>${comments[j].user} : ${comments[j].content}
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                ${time_post}&nbsp&nbsp<i onclick="delete_comment(${comments[j].id})" class="fa-regular fa-trash-can"></i></p>
+                  <hr>`)
+    
+                }
+                }
             }
-        }
-    })
+        });
 } show_store()
 
-
-
+function page2machine(id){
+    alert('잠시만 기다려주세요')
+    sessionStorage.setItem("id", id)
+    // window.location.replace(`${frontend_base_url}mypage.html?store=${id}`)
+    window.location.href = "./mypage.html"
+    
+}
+// 댓글 작성 //
+async function post_comment(id) {
+    const content = document.getElementById("comment_input" + id).value
+    const commentData = {
+        "store": id,
+        "content": content
+    }
+console.log(post_comment(id))
+    const response = await fetch(`${backend_base_url}main/${id}/comment/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + localStorage.getItem("access")
+        },
+        body: JSON.stringify(commentData)       
+    })
+    console.log(3)
+    if (response.status == 200) {
+        console.log(commentData)
+        window.opener.reload();
+        return response
+    } else {
+        alert(response.status)
+    }
+}
