@@ -163,7 +163,7 @@ function show_store(){
                 <div class="card-box">
                     <!-- 게시글 -->
                     <div class="card" id="${id}" onClick="open_modal(this.id)">
-                        <div class="card-img" style="background: url(${backend_base_url}${img}) no-repeat center center/contain;"></div>
+                        <div class="card-img" style="background: url(${img}) no-repeat center center/contain;"></div>
                         <div class="card-body">
                             <h5 class="card-title">${store_name}</h5>
                             <hr>
