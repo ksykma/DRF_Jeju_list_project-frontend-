@@ -150,12 +150,10 @@ function show_store(){
             let postings = response
             for (let i=0; i < postings.length; i++){
                 append_temp_html(
-                    postings[i].id,
+                    postings[i].id,   
                     postings[i].store_name,
                     postings[i].address,
-                    postings[i].star,
                     postings[i].img,
-                    postings[i].content,
 
                 )
             }
@@ -184,21 +182,7 @@ function show_store(){
                             </div>
                     
                             <!-- 게시글 상세페이지 모달창 바디 -->
-                            <div class="popup-body">
-                                <div class="popup-img" style="background: url(${backend_base_url}${img}) no-repeat center center/contain;">
-                            </div>
-                            <h2 class="popup-title">${store_name}</h2>
-                            <hr>
-                            <h5 class="popup-content">${address}</h5>
-                            <hr>
-                        </div>
-                        <!-- 게시글 상세페이지 모달창 댓글 input -->
-                        <div class="popup-post-comment">
-                            <input class="popup-post-input" id="comment_input${id}" type="text" placeholder="댓글을 입력 해주세요..." />
-                            <button class="popup-post-input-btn" onclick="post_comment(${id})">저장</button>
-                        </div>
-                        <!-- 게시글 상세페이지 모달창 댓글 output -->
-                        <div class="popup-comment" id="comment${id}">
+                            <div class="popup-body">0
                         </div>
                     </div>
                 </div>
