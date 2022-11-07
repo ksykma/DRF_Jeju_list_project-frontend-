@@ -24,13 +24,15 @@
     right: 0;
     top: 0;
 }
+#link-home{
+    margin-left: 20px;
+}
 
 #link-mypage {
     margin-right: 20px;
 }
 
 .navbar-brand {
-    background: url(../css/img/logo.png);
     background-position: center;
     background-size: cover;
     width: 200px;

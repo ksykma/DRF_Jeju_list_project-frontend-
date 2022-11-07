@@ -96,6 +96,10 @@ body {
     white-space:nowrap;
     overflow-x:scroll;
 }
+.card-store-detail{
+    margin-left: 80%;
+    margin-bottom: 3%;
+}
 
 .imgbox {
     margin: 20px;
