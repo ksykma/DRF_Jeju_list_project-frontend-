@@ -176,18 +176,18 @@ function show_store(){
                     <!-- 게시글 상세페이지 모달창 헤더 -->
                     <div class="popup-header">
                         <span></span>
-                        <h2>${id} 님의 게시물</h2>
+                        <h2>${store_name} 가게의 정보</h2>
                         <span></span>
-                        <i type="dutton" id="1${id}" onClick="close_modal(this.id)" class="popup-close fa-solid fa-square-xmark"></i>
+                        <i type="dutton" id="${id}" onClick="close_modal(this.id)" class="popup-close fa-solid fa-square-xmark"></i>
                     </div>
             
                     <!-- 게시글 상세페이지 모달창 바디 -->
                     <div class="popup-body">
-                        <div class="popup-img" style="background: url(${backend_base_url}${image}) no-repeat center center/contain;">
+                        <div class="popup-img" style="background: url(${img}) no-repeat center center/contain;">
                     </div>
-                    <h2 class="popup-title">${title}</h2>
+                    <h2 class="popup-title">${store_name}</h2>
                     <hr>
-                    <h5 class="popup-content">${content}</h5>
+                    <h5 class="popup-content">${address}</h5>
                     <hr>
                 </div>
                 <!-- 게시글 상세페이지 모달창 댓글 input -->
