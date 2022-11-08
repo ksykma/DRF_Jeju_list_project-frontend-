@@ -157,7 +157,7 @@ function show_store(){
                             <span></span>
                             <h2>${store_name} 님의 게시물</h2>
                             <span></span>
-                            <i type="button" id="1${id}" onClick="close_modal(this.id)" class="popup-close fa-solid fa-square-xmark"></i>
+                            <i type="button" id="${id}" onClick="close_modal(this.id)" class="popup-close fa-solid fa-square-xmark"></i>
                         </div>    
                         <!-- 게시글 상세페이지 모달창 바디 -->
                         <div class="popup-body">
@@ -210,7 +210,7 @@ async function post_comment(id) {
         "store": id,
         "content": content
     }
-console.log(post_comment(id))
+
     const response = await fetch(`${backend_base_url}main/${id}/comment/`, {
         method: 'POST',
         headers: {
@@ -220,11 +220,12 @@ console.log(post_comment(id))
         body: JSON.stringify(commentData)       
     })
     console.log(3)
-    if (response.status == 200) {
-        console.log(commentData)
-        window.opener.reload();
-        return response
-    } else {
-        alert(response.status)
+   if (response.status == 200) {
+        comment = await response.json()
+        let time_post = new Date(comment.created_at)
+        $(`#comment${comment.post_id}`).append(`<p>${comment.user} : ${comment.content}
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            ${time_post}&nbsp&nbsp<i onclick="delete_comment(${comment.id})" class="fa-regular fa-trash-can"></i></p>
+            <hr>`)
     }
 }
