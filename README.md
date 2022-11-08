@@ -3,7 +3,7 @@
 ## 심화DRF 추천시스템프로젝트 저장소
 
 
-frontend repo = https://github.com/yoonsun9128/DRF_Jeju_list_project-frontend-
+backend repo = https://github.com/yoonsun9128/DRF_Jeju_list_project.git
 
 # ![25](https://user-images.githubusercontent.com/103415295/200451827-97c67713-e0d2-4558-bf6f-f2b9846c0829.png)팀원 역할 및 약속
 ### 팀원 역할
