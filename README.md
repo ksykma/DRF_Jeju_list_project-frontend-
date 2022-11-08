@@ -71,6 +71,8 @@ backend repo = https://github.com/yoonsun9128/DRF_Jeju_list_project.git
    + 소셜 회원가입/로그인 기능
    + 마이페이지를 이용해 자신이 작성한 댓글 확인
    + 가게에 대해 좋아요 기능
+   + 댓글 수정 및 삭제 기능
+   + 새로운 가게 
 
 
 # ![25](https://user-images.githubusercontent.com/103415295/200451936-b234dac2-a60a-4249-8a04-f03662eb0122.png)기술 스택
